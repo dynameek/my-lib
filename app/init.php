@@ -6,13 +6,13 @@
     function __autoload($className)
     {
         #   
-        if(file_exists('../app/core/'.$className.'.php'))
+        if(file_exists('./app/core/'.$className.'.php'))
 		{
-           require_once('../app/core/'.$className.'.php');
+           require_once('./app/core/'.$className.'.php');
 		}
-        elseif(file_exists('../app/classes/'.$className.'.php'))
+        elseif (file_exists('./app/classes/'.$className.'.php'))
 		{
-            require_once('../app/classes/'.$className.'.php');
+            require_once('./app/classes/'.$className.'.php');
 		}
         elseif (file_exists('../classes/'.$className.'.php'))
 		{
