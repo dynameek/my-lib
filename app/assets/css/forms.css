@@ -69,10 +69,10 @@ label{
 .no-border{
 	border: none;
 }
-.curved-edges{
+.rounded-corners{
 	border-radius: 3.5px;
 }
-.round-sides{
+.rounded-sides{
 	border-radius: 50px;
 }
 
