@@ -1,0 +1,59 @@
+/*
+ *	@Purpose: Holds all my color options
+ *	@Author: Oguntuberu Nathan O.
+ *	@Date: 15-07-2018
+*/
+
+/*	WHITE	*/
+.white{
+	color: #fff;
+}
+.bg-white{
+	background: #fff;
+}
+
+/*	BLUE	*/
+.baby-blue{
+	color: #5493C4;
+}
+.cool-blue{
+	color: #065DA0;
+}
+.dark-blue{
+	color: #01213A;
+}
+
+.bg-baby-blue{
+	background: #88ADC9;
+}
+.bg-cool-blue{
+	background: #065DA0;
+	color: #fff;
+}
+.bg-dark-blue{
+	background: #01213A;
+	color: #fff;
+}
+
+/*	*/
+.bg-grey{
+	background: #ddd;
+}
+.bg-light-grey{
+	background: #efefef;
+}
+
+/*	*/
+.bg-green{
+	background: #17B75A;
+	color: #fff;
+}
+
+/*	*/
+.bg-red{
+	background: #AF1C32;
+	color: #fff;
+}
+.bg-pink{
+	background: #E83CA3;
+}

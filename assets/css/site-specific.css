@@ -1,0 +1,62 @@
+/*
+ *
+ */
+
+/*  */
+.listings{
+    width: 700px;
+    padding: 10px;
+    margin-left: 15%;
+}
+.listing{
+    margin-bottom: 10px;
+}
+/* */
+.extra {
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+    
+    color: #444;
+}
+.listing span{
+    display: inline-block;
+    margin-right: 5px;
+    margin-left: 10px;
+    
+    background-size: 100% 100%;
+}
+.listing > .extra > span:first-child{
+    margin-left: 0;
+}
+.edit{
+    float: right;
+    width: 15px;
+    height: 15px;
+    background: url('../images/edit.png');
+}
+.views{
+    width: 20px;
+    height: 15px;
+    background: url('../images/view.png');
+}
+.date{
+    width: 13px;
+    height: 13px;
+    background: url('../images/clock.png');
+}
+
+/*  */
+.listing-image{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin-bottom: 10px;
+}
+.btn-delete{
+    float: right;
+    width: 20px;
+    height: 20px;
+    margin-top: 5px;
+    
+    background: url('../images/delete.png');
+}

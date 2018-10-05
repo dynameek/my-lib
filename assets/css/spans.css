@@ -1,0 +1,58 @@
+/*
+ *
+ *
+*/
+span[class~='edit']
+{
+    background: url('../images/edit.png');
+}
+span[class~='view']
+{
+    background: url('../images/view.png');
+}
+span[class~='date']
+{
+    background: url('../images/clock.png');
+}
+span[class~='remove']
+{
+    background: url('../images/delete.png');
+}
+span[class~='email']
+{
+    background: url('../images/mail.png');
+}
+span[class~='location']
+{
+    background: url('../images/location.png');
+}
+span[class~='uri']
+{
+    background: url('../images/uri.png');
+}
+span[class~='phone']
+{
+    background: url('../images/phone.png');
+}
+
+/*  */
+span[class~='icon']
+{
+    display: inline-block;
+    background-position: center;
+    background-size: 100% 100%;
+    width: 12.5px;
+    height: 12.5px;
+    
+    margin-right: 5px;
+    margin-left: 10px;
+}
+span[class~='icon']:first-child
+{
+    margin-left: 0;
+}
+span[class~='icon-lg']{
+    width: 17px;
+    height: 17px;
+    margin-right: 15px;
+}
