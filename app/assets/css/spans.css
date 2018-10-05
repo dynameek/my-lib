@@ -4,35 +4,35 @@
 */
 span[class~='edit']
 {
-    background: url('../images/edit.png');
+    background: url('../media/icons/edit.png');
 }
 span[class~='view']
 {
-    background: url('../images/view.png');
+    background: url('../media/icons/view.png');
 }
 span[class~='date']
 {
-    background: url('../images/clock.png');
+    background: url('../media/icons/clock.png');
 }
 span[class~='remove']
 {
-    background: url('../images/delete.png');
+    background: url('../media/icons/delete.png');
 }
 span[class~='email']
 {
-    background: url('../images/mail.png');
+    background: url('../media/icons/mail.png');
 }
 span[class~='location']
 {
-    background: url('../images/location.png');
+    background: url('../media/icons/location.png');
 }
 span[class~='uri']
 {
-    background: url('../images/uri.png');
+    background: url('../media/icons/uri.png');
 }
 span[class~='phone']
 {
-    background: url('../images/phone.png');
+    background: url('../media/icons/phone.png');
 }
 
 /*  */
