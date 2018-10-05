@@ -1,5 +1,5 @@
 <?php
-    require './app/init.php';
+    require '../app/init.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,7 +12,11 @@
     </head>
     <body>
         <div class="form-wrapper">
-            
+            <form name="" method="post" action="">
+                <?php
+                    FormBuilder::createInputElement('text', 'name', 'Please Enter yout name', '', [], 'name');
+                ?>  
+            </form>
         </div>
     </body>
 </html>

@@ -33,7 +33,7 @@
             echo '</select>';
         }
         
-        private function generateClassString($classes = [])
+        private static function generateClassString($classes = [])
         {
             $classString = "";
             foreach($classes as $class)
@@ -44,7 +44,7 @@
             #
             return $classString;
         }
-        private function generateSelectOptions($options = [])
+        private static function generateSelectOptions($options = [])
         {
             foreach($options as $value => $placeHolder)
             {
