@@ -12,7 +12,7 @@
     class Database
     {
         private $handle;      #   This would hold the connection resource
-        private $dbError = '';   #   This holds errors that may occur, for testing purposes
+        public $dbError = '';   #   This holds errors that may occur, for testing purposes
         
         /*  */
         public function __construct()
@@ -30,25 +30,25 @@
          *
          *  It returns a cleaned data
         */
-        public function cleanVariable($var)
+        static function cleanVariable($var)
         {
             return mysqli_real_escape_string($this->handle, $var);
         }
         
         /*  Close the database connection   */
-        public function closeConnection()
+        static function closeConnection()
         {
             mysqli_close($this->handle);
         }
         
         /*  */
-        public function getConn()
+        static function getConn()
         {
             return $this->handle;
         }
         
         /*  */
-        public function getErrMessage()
+        static function getErrMessage()
         {
             return $this->dbError;
         }
@@ -59,11 +59,38 @@
          *
          *  It returns true on success and false otherwise
         */
-        public function selectDb($db_name)
+        static function selectDb($db_name)
         {
             $retVal = false;
-            $db_name = $this->cleanVariable($db_name);  #   Clean parameter for attacks
+            $db_name = self::cleanVariable($db_name);  #   Clean parameter for attacks
             if(mysqli_select_db($this->handle, $db_name)) $retVal = true;
+            
+            #
+            return $retVal;
+        }
+        
+        /*
+         *  Check if a given tuble exists
+         *
+         *  It returns true if exits, false otherwise
+        */
+        static function doesRecordExist($tablename, $field, $value)
+        {
+            #
+            $retVal = false;
+            
+            #
+            $tablename = self::cleanVariable($tablename);
+            $field = self::cleanVariable($field);
+            $value = self::cleanVariable($value);
+            
+            #
+            $query = "SELECT * FROM ".$tablename." WHERE ".$field." = '".$value."' LIMIT 1";
+            $queryRun = mysqli_query($this->handle, $query);
+            if(mysqli_affected_rows($this->handle) === 1)
+            {
+                $retVal = true;   
+            }
             
             #
             return $retVal;
@@ -77,7 +104,7 @@
          *
          *  It returns true on success and false otherwise
         */
-        public function insertRecord($table = '', $data = [])
+        static function insertRecord($table = '', $data = [])
         {
             $retVal = false;    #   Default return value
             $fields= '';        #   Array to hold table field names
@@ -88,12 +115,12 @@
             {
                 #   Clean table name and data values against attacks
                 #   In the process, create a string of fields and values
-                $table = $this->cleanVariable($table);
+                $table = self::cleanVariable($table);
                 foreach ($data as $key => $value)
                 {
-                    $fields .= $this->cleanVariable($key).",";
-                    if(is_int($value)) $values .= $this->cleanVariable($value)."'";
-                    else $values .= "'".$this->cleanVariable($value)."',";
+                    $fields .= self::cleanVariable($key).",";
+                    if(is_int($value)) $values .= self::cleanVariable($value)."'";
+                    else $values .= "'".self::cleanVariable($value)."',";
                 }
                 
                 #   Trim any trailing commas on the right of the string
@@ -120,7 +147,7 @@
          *
          *  It returns true on success and false otherwise
         */
-        public function updateRecord($table = '', $field = '', $fieldValue = '', $constraintField = '', $constraintValue = '')
+        static function updateRecord($table = '', $field = '', $fieldValue = '', $constraintField = '', $constraintValue = '')
         {
             $retVal = false;
             
@@ -134,8 +161,8 @@
                 is_int($fieldValue) ? : $fieldValue = "'".$fieldValue."'";
                 
                 #   Clean input data and Build query string 
-                $query = "UPDATE ".$this->cleanVariable($table)." SET ".$this->cleanVariable($field)." = ".$$this->cleanVariable($fieldValue)."
-                WHERE ".$this->cleanVariable($constraintField)." = ".$this->cleanVariable($constraintValue);
+                $query = "UPDATE ".self::cleanVariable($table)." SET ".self::cleanVariable($field)." = ".self::cleanVariable($fieldValue)."
+                WHERE ".self::cleanVariable($constraintField)." = ".self::cleanVariable($constraintValue);
                 
                 #   run query
                 if(mysqli_query($this->handle, $query)) $retVal = true;
@@ -156,7 +183,7 @@
          *  It returns true on success and false otherwise
          *
         */
-        public function updateAllRecords($table ='', $field = '', $fieldValue = '')
+        static function updateAllRecords($table ='', $field = '', $fieldValue = '')
         {
             $retVal = false;
             
@@ -168,9 +195,9 @@
                 is_int($fieldValue) ? : $fieldValue = "'".$fieldValue."'";
                 
                 #   Clean data against attacks
-                $table = $this->cleanVariable($table);
-                $field = $this->cleanVariable($field);
-                $fieldValue = $this->cleanVariable($fieldValue);
+                $table = self::cleanVariable($table);
+                $field = self::cleanVariable($field);
+                $fieldValue = self::cleanVariable($fieldValue);
                 
                 #   Build the query string
                 $query = "UPDATE ".$table." SET ".$field." = ".$fieldValue;
@@ -196,7 +223,7 @@
          *  It returns an empty array if no record is returned
          *  It returns an array of requested data
         */
-        public function fetchData($table = '', $fields = [], $constraints = [], $constraintLevel = 'tight')
+        static function fetchData($table = '', $fields = [], $constraints = [], $constraintLevel = 'tight')
         {
             $retVal = [];
             
@@ -216,13 +243,13 @@
                 if($constraintLevel == 'loose') $connector = "OR";
                 
                 /*  Clean parameters    */
-                $table = $this->cleanVariable($table);
-                $constraintLevel = $this->cleanVariable($constraintLevel);
+                $table = self::cleanVariable($table);
+                $constraintLevel = self::cleanVariable($constraintLevel);
                 
                 #   create fields strings
                 foreach ($fields as $field)
                 {
-                    $fieldString .= $this->cleanVariable($field).", ";
+                    $fieldString .= self::cleanVariable($field).", ";
                 }
                 
                 #   Create constraint string

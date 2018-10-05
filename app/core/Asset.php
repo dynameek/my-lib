@@ -19,7 +19,7 @@
         const viewElementPath = '../app/assets/viewElements/';      #   Base uri for viewElement
         
         /*
-         *  Thid function generates meta tag for responsive design
+         *  This function generates meta tag for responsive design
         */
         static function generateViewportMeta()
         {

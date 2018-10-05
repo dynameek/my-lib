@@ -9,28 +9,28 @@
             #
             echo    '<input type="'.$type.'" name="'.$name.'" value="'.$value.
                     '" placeholder="'.$placeHolder.'" class ="'.self::generateClassString($classes).'"
-                    id="'.$id.'">';
+                    id="'.$id.'"><br>';
         }
         
         static function createButton($name, $value, $classes = [], $id = '')
         {
             
             #
-            echo    '<button name="'.$name.'" value="'.$value.'"
-                    class="'.self::generateClassString($classes).'" id="'.$id.'" </button>';
+            echo    '<button name="'.$name.'" class="'.self::generateClassString($classes).'"
+                    id="'.$id.'">'.$value.'</button><br>';
         }
         
         static function createTextArea($name, $value = '', $placeholder = '', $classes = [], $id = '')
         {
             echo    '<textarea name="'.$name.'" value="'.$value.'" placeholder="'.$placeholder.
-                    '" class="'.self::generateClassString($classes).'" id="'.$id.'"';
+                    '" class="'.self::generateClassString($classes).'" id="'.$id.'"></textarea><br>';
         }
         
         static function createSelectElement($name, $options = [], $classes = [], $id='')
         {
             echo '<select name="'.$name.'" class="'.self::generateClassString($classes).'" id="'.$id.'">';
             self::generateSelectOptions($options);
-            echo '</select>';
+            echo '</select><br>';
         }
         
         private static function generateClassString($classes = [])
