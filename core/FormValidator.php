@@ -4,7 +4,7 @@
      *  This class handles basic form data sanitization
      *  It is extended by Controllers
     */
-    class Form
+    class FormValidator
     {
         public $formError = ''; #   Holds any errors encountered
         

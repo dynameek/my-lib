@@ -19,6 +19,14 @@
         const viewElementPath = '../app/assets/viewElements/';      #   Base uri for viewElement
         
         /*
+         *  Thid function generates meta tag for responsive design
+        */
+        static function generateViewportMeta()
+        {
+            echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">';
+        }
+        
+        /*
          *  This loads a HTML img element for the supplied image name
          *  It takes 3 parameters:
          *  1. The image name (e.g xyz.png)
